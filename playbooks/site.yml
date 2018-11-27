@@ -1,0 +1,7 @@
+---
+- name: Install nginx
+  become: true
+  hosts: webserver
+  remote_user: ec2-user
+  roles:
+     - nginx

@@ -1,0 +1,13 @@
+---
+# tasks file for nginx
+
+- name: Install nginx
+  apt: name=nginx state=present
+
+- name: Copy nginx configuration for website
+  template: src=/home/centos/playbooks/conf/mysite.conf dest=/etc/nginx/conf.d
+  notify: restart nginx
+
+- name: copy html contents 
+  copy: src=/home/centos/playbooks/html dest=/usr/share/nginx/
+  notify: restart nginx
